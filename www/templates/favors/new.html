@@ -1,0 +1,43 @@
+
+
+
+<view title="'Create a New Favor'">
+  <content has-header="true" has-tabs="true">
+
+
+  <div class="list">
+    <label class="item item-input">
+      <input type="date" placeholder="Date" ng-model="newFavor.date">
+    </label>
+    <label class="item item-input">
+      <input type="text" placeholder="Recipient" ng-model="newFavor.name">
+    </label>
+    <label class="item item-input">
+      <input type="text" placeholder="Role" ng-model="newFavor.role">
+    </label>
+    <label class="item item-input">
+      <textarea placeholder="Comments" ng-model="newFavor.description"></textarea>
+    </label>    
+  <!-- stars -->
+  <div class="item item-divider">
+    Rate favor
+  </div>
+  <div class="item range range-balanced">
+    <i class="icon ion-ios7-star-outline"></i>
+    <input type="range" name="stars" min="0" max="5" ng-model="newFavor.rating">
+    <i class="icon ion-ios7-star"></i>  <i class="icon ion-ios7-star"></i>  <i class="icon ion-ios7-star"></i>
+  </div>
+</div>
+
+    
+    <button class="button button-full button-positive" ng-click="saveNewFavor()">
+ Save 
+</button>
+
+
+  {{newFavor}}
+
+
+    </div>
+  </content>
+</view>
