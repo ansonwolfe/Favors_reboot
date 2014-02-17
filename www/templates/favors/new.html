@@ -3,20 +3,37 @@
 
 <view title="'Create a New Favor'">
   <content has-header="true" has-tabs="true">
-
-
   <div class="list">
+      <div class="item item-divider">
+Details 
+  </div>
     <label class="item item-input">
-      <input type="date" placeholder="Date" ng-model="newFavor.date">
+      <input type="date" name="date" ng-model="newFavor.date" required>
     </label>
     <label class="item item-input">
-      <input type="text" placeholder="Recipient" ng-model="newFavor.name">
+      <input type="text" name="contact_name" placeholder="Contact" ng-model="newFavor.name" required>
     </label>
-    <label class="item item-input">
-      <input type="text" placeholder="Role" ng-model="newFavor.role">
+    
+    <label class="item item-radio">
+      <input type="radio" name="group" value="Gave" ng-model="newFavor.role" >
+        <div class="item-content">
+         Gave
+        </div>
+      <i class="radio-icon ion-checkmark"></i>
     </label>
+    <label class="item item-radio">
+      <input type="radio" name="group" value="Received" ng-model="newFavor.role" >
+        <div class="item-content">
+         Received
+        </div>
+      <i class="radio-icon ion-checkmark"></i>
+    </label>    
+
+<!--     <label class="item item-input">
+      <input type="text" name="my_role" placeholder="My Role" ng-model="newFavor.role" required >
+    </label> -->
     <label class="item item-input">
-      <textarea placeholder="Comments" ng-model="newFavor.description"></textarea>
+      <textarea name="description" placeholder="Describe" ng-model="newFavor.description" required></textarea>
     </label>    
   <!-- stars -->
   <div class="item item-divider">
@@ -24,7 +41,7 @@
   </div>
   <div class="item range range-balanced">
     <i class="icon ion-ios7-star-outline"></i>
-    <input type="range" name="stars" min="0" max="5" ng-model="newFavor.rating">
+    <input type="range" name="stars" min="0" max="5" ng-model="newFavor.rating" required>
     <i class="icon ion-ios7-star"></i>  <i class="icon ion-ios7-star"></i>  <i class="icon ion-ios7-star"></i>
   </div>
 </div>
@@ -35,7 +52,7 @@
 </button>
 
 
-  {{newFavor}}
+<!--   {{newFavor}} -->
 
 
     </div>

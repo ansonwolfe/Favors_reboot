@@ -7,3 +7,28 @@
   height: 96px;
 }
 
+.positive {
+	color: #3D78E7;
+}
+
+.calm {
+	color: #51C1DD;
+}
+.balanced {
+	color: #6BBA24;
+}
+
+.energized {
+	color: #E6A93A;
+}
+
+.assertive{
+	color: #DB4738;
+}
+
+.loyal{
+	color: #6F62E2;
+}
+.dark{
+	color: #42423C;
+}

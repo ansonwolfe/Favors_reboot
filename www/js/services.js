@@ -1,7 +1,11 @@
+// Firebase as backend 
+// currently not in use
+// To reuse: Rename services.js to somethign else and rename this file to services.js and 
+
 angular.module('favorsApp.services',['firebase'])
 
 
-.value('fireBaseUrl',"https://favorsreboot.firebaseio.com/")
+.value('fireBaseUrl',"https://favors.firebaseio.com/")
 
 
 

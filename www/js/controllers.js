@@ -51,7 +51,7 @@ favorsApp.controller('FavorNewController',function($scope,$state,FavorStore){
 
    $scope.saveNewFavor = function(){
 
-    $scope.newFavor.date = new Date()
+    // $scope.newFavor.date = new Date()
 
     $scope.favors.$add($scope.newFavor)
 
@@ -91,9 +91,22 @@ favorsApp.controller('FavorDetailController',function($scope, $state, FavorStore
 favorsApp.controller('FavorsOverviewController',function($scope,$state,_,FavorStore){
 
   FavorStore.then(function(userRef){
-    $scope.favors = userRef;
-    $scope.favorsfun = _.pluck($scope.favors,'name');
-    $scope.something = _.groupBy($scope.favors, 'name');
+
+  // removing the blank strings that Firebase inputs
+    $scope.favors = _.compact(userRef);
+
+  // getting unique names
+    var messy_contacts = _.pluck($scope.favors,'name');
+    var unique_contacts = _.uniq(messy_contacts)
+    $scope.allcontacts = unique_contacts
+  // $scope.allcontacts = _.without(unique_contacts, "");
+
+    var grouped_contacts = _.groupBy($scope.favors, 'name');
+    // for(i=0; i < grouped_contacts.length; i++){
+    //   _.countBy(grouped_contacts, function(grouped_contacts.role){
+    //     return grouped_contacts.role == "Gave" ? 'Gave':'Received'
+    //   })
+    // }
     // $scope.navigateTo = function($index, favor){
 
     //   $state.transitionTo('app.favordetail', {favorId:$index})

@@ -8,7 +8,7 @@
  <header-bar
  title="'Favors'"
  right-buttons="rightButtons"
- type="bar-positive"
+ type="bar-dark"
  align-title="center">
 </header-bar>
 <view>
@@ -19,14 +19,15 @@
 <nav-view></nav-view>
 
 
-<div class="tabs">
-  <a class="tab-item" icon="icon ion-document-text" ui-sref="app.favors">
-    Favors
-  </a>
+<div class="tabs tabs-warning tabs-icon-top">
   <a class="tab-item" icon="icon ion-plus" ui-sref="app.newFavor">
-    Add Favor
+    <i class="icon ion-plus" ></i> Add Favor
+  </a>
+  <a class="tab-item" ui-sref="app.favors">
+    <i class="icon ion-archive" ></i>Log
   </a>
   <a class="tab-item" icon="icon ion-earth" ui-sref="app.favorsOverview">
+    <i class="icon ion-earth" ></i>    
     Overview
   </a>
 </div>

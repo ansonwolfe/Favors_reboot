@@ -2,13 +2,18 @@
   <content has-header="true">
     <list>
       
-<item ng-repeat="(id, favor) in favors" type="item-text-wrap" ng-click="navigateTo(id)">
-          <h3>{{favor.date}}</h3>
-	        <h3>{{favor.role}}</h3>
-	        <h3>{{favor.name}}</h3>
-	        <p>{{favor.description}}</p>
+<a ng-repeat="(id, favor) in favors | orderBy:-'favor.date'" type="item-text-wrap" ng-click="navigateTo(id)" class="item" >
+	    	<div class="item-avatar">
+	    		<!-- show image if exists...right now it's for Received -->
+      			<img ng-if="favor.role=='Received'" src="img/godfather.png">
+			<!-- 	<i class="icon ion-android-contact"></i> -->
+	         	<h3>{{favor.date | date:'EEE-MM-dd-yyyy'}}</h3>
+		        <h3><span ng-class="{'balanced':favor.role =='Gave', 'assertive':favor.role =='Received'}">{{favor.role}}</span></h3>
+		        <h3>{{favor.name}}</h3>
+		        <p>{{favor.description}}</p>
+  			</div>
         
-      </item>
+      </a>
     </list>
 
   </content>
