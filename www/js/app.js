@@ -10,7 +10,7 @@
 
 //assign the module to a variable - some would argue for / against this - i prefer it vs. chaining syntax. ymmv.
 //
-var favorsApp = angular.module('favorsApp', ['ionic', 'favorsApp.controllers','favorsApp.services'])
+var favorsApp = angular.module('favorsApp', ['ionic', 'favorsApp.controllers','favorsApp.services', 'underscore'])
 
 
 .config(function($stateProvider, $urlRouterProvider) {
@@ -51,6 +51,12 @@ var favorsApp = angular.module('favorsApp', ['ionic', 'favorsApp.controllers','f
     templateUrl : 'templates/favors/favor-detail.html',
     controller : 'FavorDetailController'
   })
+  
+  .state('app.favorsOverview',{
+    url : '/favors',
+    templateUrl : 'templates/favors/favors-overview.html',
+    controller : 'FavorsOverviewController'
+  })
 
   // .state('app.overview',{
   //   url : '/overview',
@@ -83,3 +89,9 @@ var favorsApp = angular.module('favorsApp', ['ionic', 'favorsApp.controllers','f
   })
 
 })
+
+// include underscore.js
+var underscore = angular.module('underscore', []);
+  underscore.factory('_', function() {
+    return window._; // assumes underscore has already been loaded on the page
+});  

@@ -36,25 +36,8 @@ favorsApp.controller('LoginController',function($scope,$state,UserAuth){
   }
 
 })
+// end user registration / login 
 
-
-
-favorsApp.controller('FavorListController',function($scope,$state,FavorStore){
-
-  FavorStore.then(function(userRef){
-    $scope.favors = userRef;
-    $scope.navigateTo = function($index, favor){
-
-      $state.transitionTo('app.favordetail', {favorId:$index})
-    } 
-  })
-
-// promise is a placeholder that a value will be returned later
-  
- 
-
-
-})
 
 
 favorsApp.controller('FavorNewController',function($scope,$state,FavorStore){
@@ -78,6 +61,20 @@ favorsApp.controller('FavorNewController',function($scope,$state,FavorStore){
 
 })
 
+// End CRUD   
+
+favorsApp.controller('FavorListController',function($scope,$state,FavorStore){
+
+  FavorStore.then(function(userRef){
+    $scope.favors = userRef;
+    $scope.navigateTo = function($index, favor){
+
+      $state.transitionTo('app.favordetail', {favorId:$index})
+    } 
+  })
+// promise is a placeholder that a value will be returned later
+})
+
 
 favorsApp.controller('FavorDetailController',function($scope, $state, FavorStore){
   console.log($state.params)
@@ -88,4 +85,19 @@ favorsApp.controller('FavorDetailController',function($scope, $state, FavorStore
 
   })
 
+})
+
+
+favorsApp.controller('FavorsOverviewController',function($scope,$state,_,FavorStore){
+
+  FavorStore.then(function(userRef){
+    $scope.favors = userRef;
+    $scope.favorsfun = _.pluck($scope.favors,'name');
+    $scope.something = _.groupBy($scope.favors, 'name');
+    // $scope.navigateTo = function($index, favor){
+
+    //   $state.transitionTo('app.favordetail', {favorId:$index})
+    //} 
+  })
+// promise is a placeholder that a value will be returned later
 })

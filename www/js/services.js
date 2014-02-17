@@ -1,7 +1,7 @@
 angular.module('favorsApp.services',['firebase'])
 
 
-.value('fireBaseUrl',"https://favors.firebaseio.com/")
+.value('fireBaseUrl',"https://favorsreboot.firebaseio.com/")
 
 
 
