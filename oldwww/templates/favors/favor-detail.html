@@ -1,0 +1,63 @@
+<view title="favor.name">
+  <content has-header="true" padding="true">
+<!--   	<div class="card">
+	  	<p>Date: {{favor.date}}</p>
+	    <p>{{favor.role}}</p>
+	    <p>{{favor.name}}</p>
+
+	    <p>{{ favor.description }}</p>
+	    <p>{{ favor.rating }} <i class="icon ion-ios7-star"></i><i class="icon ion-ios7-star"></i><i class="icon ion-ios7-star"></i>!</p>
+	</div> -->
+<div class="list card">
+
+  <div class="item item-avatar">
+    <img src="img/mcfly.jpg">
+
+    <h2>{{favor.name}}</h2>
+    <p><strong>On: </strong>{{favor.date | date:'mediumDate'}} </p>
+    <p>	<strong> <span ng-class="{'balanced':favor.role =='Gave', 'calm':favor.role =='Received'}">I {{favor.role}}</span> </strong></P>
+    <p>
+    	<strong>Rating: </strong> {{favor.rating}} Stars
+    </p>
+
+  </div>
+
+  <div class="item item-body">
+   <!--  <img class="full-image" src="delorean.jpg"> -->
+
+    <p>
+      {{favor.description}}
+    </p>
+
+<!--     <p>
+      <a href="#" class="subdued">1 Like</a>
+      <a href="#" class="subdued">5 Comments</a>
+    </p> -->
+  </div>
+  <!-- <div class="item tabs tabs-secondary tabs-icon-left"> -->
+
+
+    <!-- <a class="tab-item" href="#">
+      <i class="icon ion-thumbsup"></i>
+      Like
+    </a>
+    <a class="tab-item" href="#">
+      <i class="icon ion-chatbox"></i>
+      Comment
+    </a>
+    <a class="tab-item" href="#">
+      <i class="icon ion-share"></i>
+      Share
+    </a> -->
+  <!-- </div> -->
+
+</div>
+
+
+    <p><a class="button button-small icon ion-arrow-left-b" ui-sref="app.favors"> All Favors</a></p>
+    <p><a class="button button-small" ui-sref="app.favoredit"> Edit</a></p>
+
+
+
+  </content>
+</view>

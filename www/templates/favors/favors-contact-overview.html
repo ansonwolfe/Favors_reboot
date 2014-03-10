@@ -1,12 +1,20 @@
 
-<view title="'Favors for favor.name'">
+<view title="Favors">
   <content has-header="true" padding="true">
-    <p>{{favor.name}}</p>
-    <p>Owes you {{count favors}}</p>
-    <p>Did you {{count favors}}</p>
+      <a type="item-text-wrap" class="item">
+          <h2>{{contact.name.name.formatted}}</h2>
+          <div style="margin-left:30px;">Owes you {{contact.gavedCount}} favors</div>
+          <div style="margin-left:30px;">Did you {{contact.receivedCount}} favors</div>
+      </a>
+      <a ng-repeat="favor in contact.favors | orderBy:'-date'" type="item-text-wrap" class="item" >
+          <div class="item-avatar">
+              <img ng-if="favor.role=='Received'" src="img/godfather.png">
+              <img ng-if="favor.role=='Gave'" src="img/mcfly.jpg">
+              <h3>{{favor.date | date:'EEE-MM-dd-yyyy'}} Rating: {{favor.rating}}</h3>
+              <h3><span ng-class="{'balanced':favor.role =='Gave', 'assertive':favor.role =='Received'}">{{favor.role}}</span></h3>
+              <p>{{favor.description}}</p>
+          </div>
 
-    {{list of all favors with this contact}}
-
-    <p><a class="button button-small icon ion-arrow-left-b" href="#/tab/favors"> All Favors</a></p>
+      </a>
   </content>
 </view>

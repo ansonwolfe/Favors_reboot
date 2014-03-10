@@ -1,0 +1,35 @@
+
+<!-- 
+  Create tabs with an icon and label, using the tabs-positive style. 
+  Each tab's child <nav-view> directive will have its own 
+  navigation history that also transitions its views in and out.
+-->
+
+ <header-bar
+ title="'Favors'"
+ right-buttons="rightButtons"
+ type="bar-dark"
+ align-title="center">
+</header-bar>
+<view>
+
+
+
+
+<nav-view></nav-view>
+
+
+<div class="tabs tabs-warning tabs-icon-top">
+  <a class="tab-item" icon="icon ion-plus" ui-sref="app.newFavor">
+    <i class="icon ion-plus" ></i> Add Favor
+  </a>
+  <a class="tab-item" ui-sref="app.favors">
+    <i class="icon ion-archive" ></i>Log
+  </a>
+  <a class="tab-item" icon="icon ion-earth" ui-sref="app.favorsOverview">
+    <i class="icon ion-earth" ></i>    
+    Overview
+  </a>
+</div>
+</view>
+

@@ -13,7 +13,7 @@
   <div class="item item-avatar">
     <img src="img/mcfly.jpg">
 
-    <h2>{{favor.name}}</h2>
+    <h2>{{favor.name.name.formatted}}</h2>
     <p><strong>On: </strong>{{favor.date | date:'mediumDate'}} </p>
     <p>	<strong> <span ng-class="{'balanced':favor.role =='Gave', 'calm':favor.role =='Received'}">I {{favor.role}}</span> </strong></P>
     <p>
@@ -55,5 +55,10 @@
 
 
     <p><a class="button button-small icon ion-arrow-left-b" ui-sref="app.favors"> All Favors</a></p>
+    <!--<p><a class="button button-small" onclick="navigateTo()" ui-sref="app.favoredit"> Edit</a></p>-->
+      <p><a class="button button-small" ng-click="navigateTo()"> Edit</a></p>
+
+
+
   </content>
 </view>

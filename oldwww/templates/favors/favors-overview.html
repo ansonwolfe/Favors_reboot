@@ -1,0 +1,18 @@
+
+<view title="'Favors Overview'">
+  <content has-header="true" has-tabs="true">
+	<a ng-repeat="contact in allcontacts" type="item-text-wrap" class="item" >
+		<h3>{{contact}}</h3>
+	
+<!-- 			<ng-pluralize count="contact.role"
+			                 when="{'0': 'Nobody is viewing.',
+			                     'one': '1 person is viewing.',
+			                     'other': '{} people are viewing.'}">
+			</ng-pluralize> -->
+	</a>	
+
+	<pre>{{grouped_contacts}}</pre>
+
+
+  </content>
+</view>

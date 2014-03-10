@@ -1,9 +1,10 @@
 
 <view title="'Favors Overview'">
   <content has-header="true" has-tabs="true">
-	<a ng-repeat="contact in allcontacts" type="item-text-wrap" class="item" >
-		<h3>{{contact}}</h3>
-	
+	<a ng-repeat="contact in allcontacts | orderBy:'name'" type="item-text-wrap" class="item" ng-click="navigateTo(contact.name)">
+		<h2>{{contact.name.name.formatted}}</h2>
+        <div style="margin-left:30px;">Owes you {{contact.gavedCount}} favors</div>
+        <div style="margin-left:30px;">Did you {{contact.receivedCount}} favors</div>
 <!-- 			<ng-pluralize count="contact.role"
 			                 when="{'0': 'Nobody is viewing.',
 			                     'one': '1 person is viewing.',
@@ -11,7 +12,7 @@
 			</ng-pluralize> -->
 	</a>	
 
-	<pre>{{grouped_contacts}}</pre>
+	<!--<pre>{{grouped_contacts}}</pre>-->
 
 
   </content>

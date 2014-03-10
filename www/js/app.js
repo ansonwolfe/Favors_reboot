@@ -51,6 +51,12 @@ var favorsApp = angular.module('favorsApp', ['ionic', 'favorsApp.controllers','f
     templateUrl : 'templates/favors/favor-detail.html',
     controller : 'FavorDetailController'
   })
+
+  .state('app.favoredit',{
+    url : '/:favorId/favor-edit.html',
+    templateUrl : 'templates/favors/favor-edit.html',
+    controller : 'FavorEditController'
+  })
   
   .state('app.favorsOverview',{
     url : '/favors',
@@ -58,6 +64,11 @@ var favorsApp = angular.module('favorsApp', ['ionic', 'favorsApp.controllers','f
     controller : 'FavorsOverviewController'
   })
 
+  .state('app.favorsContactOverview',{
+      url : '/:contactname/favors-contact-overview.html',
+      templateUrl : 'templates/favors/favors-contact-overview.html',
+      controller : 'FavorsContactOverviewController'
+  })
   // .state('app.overview',{
   //   url : '/overview',
   //   templateUrl : 'templates/favors/favors-list.html'

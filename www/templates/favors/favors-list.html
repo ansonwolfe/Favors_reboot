@@ -2,14 +2,15 @@
   <content has-header="true">
     <list>
       
-<a ng-repeat="(id, favor) in favors | orderBy:-'favor.date'" type="item-text-wrap" ng-click="navigateTo(id)" class="item" >
+    <a ng-repeat="favor in favors | orderBy:'-date'" type="item-text-wrap" ng-click="navigateTo(favor.ide)" class="item" >
 	    	<div class="item-avatar">
 	    		<!-- show image if exists...right now it's for Received -->
       			<img ng-if="favor.role=='Received'" src="img/godfather.png">
+      			<img ng-if="favor.role=='Gave'" src="img/mcfly.jpg">      			
 			<!-- 	<i class="icon ion-android-contact"></i> -->
-	         	<h3>{{favor.date | date:'EEE-MM-dd-yyyy'}}</h3>
-		        <h3><span ng-class="{'balanced':favor.role =='Gave', 'assertive':favor.role =='Received'}">{{favor.role}}</span></h3>
-		        <h3>{{favor.name}}</h3>
+	         	<h3>{{favor.date | date:'MM-dd-yyyy'}}</h3>
+		        <h3><span ng-class="{'balanced':favor.role =='Gave', 'assertive':favor.role =='Received'}">{{favor.role}} a {{favor.rating}} star favor</span></h3>
+		        <h3>{{favor.name.name.formatted}}</h3>
 		        <p>{{favor.description}}</p>
   			</div>
         

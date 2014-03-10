@@ -1,0 +1,190 @@
+<style>
+    input[type=radio]:not(.star), input[type=checkbox]:not(.star) {
+        display:none;
+    }
+    input[type=radio]:not(.star) + label, input[type=checkbox]:not(.star) + label {
+        display:inline-block;
+        margin:-2px;
+        padding: 4px 12px;
+        margin-bottom: 0;
+        font-size: 14px;
+        line-height: 20px;
+        color: #333;
+        text-align: center;
+        text-shadow: 0 1px 1px rgba(255,255,255,0.75);
+        vertical-align: middle;
+        cursor: pointer;
+        background-color: #f5f5f5;
+        background-image: -moz-linear-gradient(top,#fff,#e6e6e6);
+        background-image: -webkit-gradient(linear,0 0,0 100%,from(#fff),to(#e6e6e6));
+        background-image: -webkit-linear-gradient(top,#fff,#e6e6e6);
+        background-image: -o-linear-gradient(top,#fff,#e6e6e6);
+        background-image: linear-gradient(to bottom,#fff,#e6e6e6);
+        background-repeat: repeat-x;
+        border: 1px solid #ccc;
+        border-color: #e6e6e6 #e6e6e6 #bfbfbf;
+        border-color: rgba(0,0,0,0.1) rgba(0,0,0,0.1) rgba(0,0,0,0.25);
+        border-bottom-color: #b3b3b3;
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff',endColorstr='#ffe6e6e6',GradientType=0);
+        filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+        -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,0.2),0 1px 2px rgba(0,0,0,0.05);
+        -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,0.2),0 1px 2px rgba(0,0,0,0.05);
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.2),0 1px 2px rgba(0,0,0,0.05);
+        width:100%;
+    }
+
+    input[type=radio]:checked:not(.star) + label, input[type=checkbox]:checked:not(.star) + label{
+        background-image: none;
+        outline: 0;
+        -webkit-box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
+        -moz-box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
+        box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
+        background-color:#e0e0e0;
+        width:100%;
+    }
+
+    .rating {
+        width: 202px;
+        margin: auto;
+        padding:10px 0 10px 0;
+        margin-bottom: 10px;
+    }
+
+    /* :not(:checked) is a filter, so that browsers that don’t support :checked don’t
+       follow these rules. Every browser that supports :checked also supports :not(), so
+       it doesn’t make the test unnecessarily selective */
+    .rating:not(:checked) > input {
+        position:absolute;
+        top:-9999px;
+        clip:rect(0,0,0,0);
+    }
+
+    .rating:not(:checked) > label {
+        float:right;
+        width:1.3em;
+        padding:0 .1em;
+        overflow:hidden;
+        white-space:nowrap;
+        cursor:pointer;
+        font-size:200%;
+        line-height:1.2;
+        color:#ddd;
+        text-shadow:1px 1px #bbb, 2px 2px #666, .1em .1em .2em rgba(0,0,0,.5);
+    }
+
+    .rating:not(:checked) > label:before {
+        content: '★ ';
+    }
+
+    .rating > input:checked ~ label {
+        color: #f70;
+        text-shadow:1px 1px #c60, 2px 2px #940, .1em .1em .2em rgba(0,0,0,.5);
+    }
+
+    .rating:not(:checked) > label:hover,
+    .rating:not(:checked) > label:hover ~ label {
+        color: gold;
+        text-shadow:1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5);
+    }
+
+    .rating > input:checked + label:hover,
+    .rating > input:checked + label:hover ~ label,
+    .rating > input:checked ~ label:hover,
+    .rating > input:checked ~ label:hover ~ label,
+    .rating > label:hover ~ input:checked ~ label {
+        color: #ea0;
+        text-shadow:1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5);
+    }
+
+    .rating > label:active {
+        position:relative;
+        top:2px;
+        left:2px;
+    }
+</style>
+
+
+<view title="'Edit Favor'" ng-init="getContacts()">
+  <content has-header="true" has-tabs="true">
+  <div class="list">
+      <div class="item item-divider">
+      Details 
+      </div>
+      <label class="item item-input">
+        <!--<input type="date" name="date" ng-model="editFavor.date" placeholder ="date" required> {{favor.date | date:'EEE-MM-dd-yyyy'}}-->
+          <input type="date" name="date" ng-model="favor.date" placeholder ="date" required>
+      </label>
+      <label class="item item-input">
+        <!--<input type="text" name="contact_name" placeholder="Contact" ng-model="editFavor.name" required>{{ favor.name }}-->
+          <select name="contact_name" placeholder="Contact" ng-model="favor.name" required style="width: 100%;" ng-options="contact.name.formatted for contact in contacts | orderBy:'name.formatted'">
+          </select>
+      </label>
+
+      <div class="item-content">
+          <div style="float: left;width:50%;">
+              <input id="button_me" type="radio" name="group" value="Gave" ng-model="favor.role" >
+              <label for="button_me">Gave a favor</label>
+          </div>
+          <div style="float: left;width:50%;">
+              <input id="received" type="radio" name="group" value="Received" ng-model="favor.role" >
+              <label for="received">Received a favor</label>
+          </div>
+      </div>
+      <!--<label class="item item-radio">
+        <input id="button_me" type="radio" name="group" value="Gave" ng-model="editFavor.role" >
+          <div class="item-content">
+           Gave a favor
+          </div>
+        <i class="radio-icon ion-checkmark"></i>
+      </label>
+    <label class="item item-radio">
+      <input type="radio" name="group" value="Received" ng-model="editFavor.role" >
+        <div class="item-content">
+         Received a favor
+        </div>
+      <i class="radio-icon ion-checkmark"></i>
+    </label> -->
+
+<!--     <label class="item item-input">
+      <input type="text" name="my_role" placeholder="My Role" ng-model="editFavor.role" required >
+    </label> -->
+    <label class="item item-input">
+      <textarea name="description" placeholder="Describe this favor" ng-model="favor.description" required>{{ favor.description }}</textarea>
+    </label>    
+  <!-- stars -->
+  <div class="item item-divider">
+    How will you rate this favor?
+  </div>
+  <div class="item range range-balanced">
+    <i class="icon ion-ios7-star-outline"></i>
+    <input type="range" name="stars" min="0" max="5" ng-model="favor.rating" required>
+    <i class="icon ion-ios7-star"></i>  <i class="icon ion-ios7-star"></i>  <i class="icon ion-ios7-star"></i>  <i class="icon ion-ios7-star"></i>  <i class="icon ion-ios7-star"></i>
+  </div>
+
+
+  <div class="rating" style="padding: 10px;">
+      <input ng-click="updateSelection($event, e.id)" type="checkbox" class="star"  id="star5" name="rating" value="5" readonly/><label for="star5" title="Rocks!">5 stars</label>
+      <input ng-click="updateSelection($event, e.id)" type="checkbox" class="star" id="star4" name="rating" value="4" readonly/><label for="star4" title="Pretty good">4 stars</label>
+      <input ng-click="updateSelection($event, e.id)" type="checkbox" class="star" id="star3" name="rating" value="3" readonly/><label for="star3" title="Meh">3 stars</label>
+      <input ng-click="updateSelection($event, e.id)" type="checkbox" class="star" id="star2" name="rating" value="2" readonly/><label for="star2" title="Kinda bad">2 stars</label>
+      <input ng-click="updateSelection($event, e.id)" type="checkbox" class="star" id="star1" name="rating" value="1" readonly/><label for="star1" title="Sucks big time">1 star</label>
+  </div>
+
+  <!-- star -->
+<!--   <div ng-controller="RatingDemoCtrl"> -->
+ <!--    <h4>Default</h4> -->
+<!--     <rating value="rate" max="max" readonly="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null"></rating>
+    <span class="label" ng-class="{'label-warning': percent<30, 'label-info': percent>=30 && percent<70, 'label-success': percent>=70}" ng-show="overStar && !isReadonly">{{percent}}%</span>
+  </div> -->
+</div>   
+    <button class="button button-full button-positive" ng-click="updateFavor()">
+        Update 
+    </button>
+
+
+<!--   {{Favor}} -->
+
+
+    </div>
+  </content>
+</view>

@@ -1,0 +1,65 @@
+
+
+
+<view title="'Edit Favor'">
+  <content has-header="true" has-tabs="true">
+  <div class="list">
+      <div class="item item-divider">
+      Details 
+      </div>
+      <label class="item item-input">
+        <input type="date" name="date" ng-model="editFavor.date" placeholder ="date" required> {{favor.date | date:'EEE-MM-dd-yyyy'}}
+      </label>
+      <label class="item item-input">
+        <input type="text" name="contact_name" placeholder="Contact" ng-model="editFavor.name" required>{{ favor.name }}
+      </label>
+    
+      <label class="item item-radio">
+        <input id="button_me" type="radio" name="group" value="Gave" ng-model="editFavor.role" >
+          <div class="item-content">
+           Gave a favor
+          </div>
+        <i class="radio-icon ion-checkmark"></i>
+      </label>
+    <label class="item item-radio">
+      <input type="radio" name="group" value="Received" ng-model="editFavor.role" >
+        <div class="item-content">
+         Received a favor
+        </div>
+      <i class="radio-icon ion-checkmark"></i>
+    </label>    
+
+<!--     <label class="item item-input">
+      <input type="text" name="my_role" placeholder="My Role" ng-model="editFavor.role" required >
+    </label> -->
+    <label class="item item-input">
+      <textarea name="description" placeholder="Describe this favor" ng-model="editFavor.description" required>{{ favor.description }}</textarea>
+    </label>    
+  <!-- stars -->
+  <div class="item item-divider">
+    How will you rate this favor?
+  </div>
+  <div class="item range range-balanced">
+    <i class="icon ion-ios7-star-outline"></i>
+    <input type="range" name="stars" min="0" max="5" ng-model="editFavor.rating" required>
+    <i class="icon ion-ios7-star"></i>  <i class="icon ion-ios7-star"></i>  <i class="icon ion-ios7-star"></i>  <i class="icon ion-ios7-star"></i>  <i class="icon ion-ios7-star"></i>
+  </div>
+
+  <!-- star -->
+<!--   <div ng-controller="RatingDemoCtrl"> -->
+ <!--    <h4>Default</h4> -->
+<!--     <rating value="rate" max="max" readonly="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null"></rating>
+    <span class="label" ng-class="{'label-warning': percent<30, 'label-info': percent>=30 && percent<70, 'label-success': percent>=70}" ng-show="overStar && !isReadonly">{{percent}}%</span>
+  </div> -->
+</div>   
+    <button class="button button-full button-positive" ng-click="updateFavor()">
+        Update 
+    </button>
+
+
+<!--   {{Favor}} -->
+
+
+    </div>
+  </content>
+</view>
